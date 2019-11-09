@@ -6,6 +6,9 @@ from nltk import FreqDist, classify, NaiveBayesClassifier
 import pickle
 import re, string, random
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+# Helper Functions
+
 def remove_noise(tweet_tokens, stop_words = ()):
 
     cleaned_tokens = []
@@ -38,8 +41,10 @@ def get_tweets_for_model(cleaned_tokens_list):
     for tweet_tokens in cleaned_tokens_list:
         yield dict([token, True] for token in tweet_tokens)
 
-if __name__ == "__main__":
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+# Main
 
+if __name__ == "__main__":
     positive_tweets = twitter_samples.strings('positive_tweets.json')
     negative_tweets = twitter_samples.strings('negative_tweets.json')
     text = twitter_samples.strings('tweets.20150430-223406.json')
@@ -77,8 +82,8 @@ if __name__ == "__main__":
 
     random.shuffle(dataset)
 
-    train_data = dataset
-    test_data = dataset
+    train_data = dataset[:10000]
+    test_data = dataset[8000:]
     print('Training................\n\n')
     classifier = NaiveBayesClassifier.train(train_data)
 
@@ -88,10 +93,6 @@ if __name__ == "__main__":
     pickle.dump(classifier, save_classifier)
     save_classifier.close()
     
-    print(classifier.show_most_informative_features(20))
+    print(classifier.show_most_informative_features(10))
 
-    custom_tweet = "I ordered just once from TerribleCo, they screwed up, never used the app again."
-
-    custom_tokens = remove_noise(word_tokenize(custom_tweet))
-
-    print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
+#------------------------------------------------------------------------------------------------------------------------------------------------------

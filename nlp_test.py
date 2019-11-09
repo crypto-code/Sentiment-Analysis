@@ -6,6 +6,9 @@ from nltk import FreqDist, classify, NaiveBayesClassifier
 import pickle
 import re, string, random
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+# Helper Function
+
 def remove_noise(tweet_tokens, stop_words = ()):
 
     cleaned_tokens = []
@@ -29,17 +32,9 @@ def remove_noise(tweet_tokens, stop_words = ()):
             cleaned_tokens.append(token.lower())
     return cleaned_tokens
 
-def get_all_words(cleaned_tokens_list):
-    for tokens in cleaned_tokens_list:
-        for token in tokens:
-            yield token
-
-def get_tweets_for_model(cleaned_tokens_list):
-    for tweet_tokens in cleaned_tokens_list:
-        yield dict([token, True] for token in tweet_tokens)
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     classifier_f = open("naivebayes.pickle", "rb")
     classifier = pickle.load(classifier_f)
     classifier_f.close()
@@ -51,7 +46,7 @@ if __name__ == "__main__":
         custom_tokens = remove_noise(word_tokenize(custom_tweet))
         print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
 
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
     
