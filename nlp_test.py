@@ -44,7 +44,7 @@ if __name__ == "__main__":
         if custom_tweet in ['Quit','quit','exit', 'Exit']:
             break
         custom_tokens = remove_noise(word_tokenize(custom_tweet))
-        print(custom_tweet, classifier.classify(dict([token, True] for token in custom_tokens)))
+        print(custom_tweet,' : ' ,classifier.classify(dict([token, True] for token in custom_tokens)))
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 
