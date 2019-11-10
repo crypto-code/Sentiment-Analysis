@@ -40,6 +40,17 @@ python nlp_test.py
 ```
 **Note: This will create an interactive prompt where you can enter the scentences to classify.**
 
+## Examples
+
+```
+> The coffee I drank is soooo bad
+The coffee I drank is soooo bad Negative
+> Congrats. You look amazing.
+Congrats. You look amazing. Positive
+> The weather is terrible no one should be outside.
+The weather is terrible no one should be outside. Negative
+```
+
 
 # G00D LUCK
 
