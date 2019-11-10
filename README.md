@@ -28,6 +28,18 @@ Naive Bayes algorithms are mostly used in sentiment analysis, spam filtering, re
 
 ## Usage
 
+- To train the Classifier run,
+```
+python nlp_train.py
+```
+**Note: This will create a pickle file to store the trained model, one already has been provided if you want to skip this step.**
+
+- To test the Classifier run,
+```
+python nlp_test.py
+```
+**Note: This will create an interactive prompt where you can enter the scentences to classify.**
+
 
 # G00D LUCK
 
